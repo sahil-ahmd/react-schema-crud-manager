@@ -25,7 +25,13 @@ export default function UserForm({ onSubmit, defaultValues }: Props) {
     if (defaultValues) {
       reset(defaultValues);
     } else {
-      reset({}); // Clear form if defaultValues becomes null/undefined
+        // This triggers when setEditingUser(undefined) is called
+      reset({
+        firstName: "",
+      lastName: "",
+      email: "",
+      phone: ""
+      });
     }
   }, [defaultValues, reset]);
 
