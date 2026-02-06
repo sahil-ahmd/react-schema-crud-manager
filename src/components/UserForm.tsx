@@ -8,9 +8,10 @@ import { useEffect } from "react";
 interface Props {
   onSubmit: (data: User) => void;
   defaultValues?: User;
+  onCancel: (data?: any) => void;
 }
 
-export default function UserForm({ onSubmit, defaultValues }: Props) {
+export default function UserForm({ onSubmit, defaultValues, onCancel }: Props) {
   const {
     register,
     handleSubmit,
@@ -20,6 +21,8 @@ export default function UserForm({ onSubmit, defaultValues }: Props) {
     resolver: zodResolver(userSchema),
     defaultValues,
   });
+
+  const isEditing = !!defaultValues?.id;
 
   useEffect(() => {
     if (defaultValues) {
@@ -43,7 +46,10 @@ export default function UserForm({ onSubmit, defaultValues }: Props) {
       })}
       className="max-w-md bg-white p-6 rounded-lg shadow-md"
     >
-      <h2 className="text-xl font-semibold mb-4">User Form</h2>
+      {/* Dynamic Title */}
+      <h2 className="text-xl font-semibold mb-4 text-gray-800">
+        {isEditing ? "Edit User" : "Add New User"}
+      </h2>
 
       {userFormFields.map((field) => (
         <div key={field.name} className="mb-4">
@@ -75,12 +81,29 @@ export default function UserForm({ onSubmit, defaultValues }: Props) {
         </div>
       ))}
 
-      <button
-        type="submit"
-        className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
-      >
-        Save User
-      </button>
+<div className="flex flex-col gap-2 mt-6">
+        <button
+          type="submit"
+          className={`w-full py-2 rounded-md text-white font-medium transition shadow-sm ${
+            isEditing 
+              ? "bg-green-600 hover:bg-green-700" 
+              : "bg-blue-600 hover:bg-blue-700"
+          }`}
+        >
+          {isEditing ? "Update User" : "Save User"}
+        </button>
+
+        {/* The Cancel Button */}
+        {isEditing && (
+          <button
+            type="button" // Important: set to "button" so it doesn't trigger form submit
+            onClick={onCancel}
+            className="w-full py-2 rounded-md bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition"
+          >
+            Cancel Edit
+          </button>
+        )}
+      </div>
     </form>
   );
 }
