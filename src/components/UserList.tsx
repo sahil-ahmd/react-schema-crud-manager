@@ -11,11 +11,19 @@ export default function UserList({
   onDelete,
   onEdit,
 }: Props) {
+    // Helper to get initials
+    const getInitials = (firstName: string, lastName: string) => {
+        const f = firstName?.charAt(0) || "";
+        const l = lastName?.charAt(0) || "";
+        return (f + l).toUpperCase();
+      };
+
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full border border-gray-200 rounded-lg">
         <thead className="bg-gray-100">
           <tr>
+          <th className="py-4 px-3 font-semibold w-16 text-center">Photo</th>
             <th className="px-4 py-2 text-left text-sm font-medium">
               First
             </th>
@@ -51,6 +59,13 @@ export default function UserList({
               key={user.id}
               className="border-t hover:bg-gray-50"
             >
+                <td className="py-4 px-3">
+                <div className="flex justify-center">
+                  <div className="w-10 h-10 rounded-full bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm shadow-sm ring-2 ring-white ring-offset-2">
+                    {getInitials(user.firstName, user.lastName)}
+                  </div>
+                </div>
+              </td>
               <td className="px-4 py-2">
                 {user.firstName}
               </td>
