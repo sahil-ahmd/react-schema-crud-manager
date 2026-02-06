@@ -111,6 +111,14 @@ export default function Home() {
 
         {/* List Column */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <div className="flex justify-between items-center mb-4">
+    <h2 className="text-lg font-semibold text-gray-700">All Users</h2>
+    {/* The Count Badge */}
+    <span className="bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-full">
+      {users.length} Total
+    </span>
+  </div>
+          
           {loading && users.length === 0 ? (
             <div className="flex flex-col gap-4">
               {[1, 2, 3].map((i) => (
