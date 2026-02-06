@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { userFormFields } from "../config/userFormConfig";
 import type { User } from "../types/user";
 import { userSchema } from "../schema/userSchema";
+import { useEffect } from "react";
 
 interface Props {
   onSubmit: (data: User) => void;
@@ -19,6 +20,14 @@ export default function UserForm({ onSubmit, defaultValues }: Props) {
     resolver: zodResolver(userSchema),
     defaultValues,
   });
+
+  useEffect(() => {
+    if (defaultValues) {
+      reset(defaultValues);
+    } else {
+      reset({}); // Clear form if defaultValues becomes null/undefined
+    }
+  }, [defaultValues, reset]);
 
   return (
     <form
