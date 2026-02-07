@@ -28,12 +28,12 @@ export default function UserForm({ onSubmit, defaultValues, onCancel }: Props) {
     if (defaultValues) {
       reset(defaultValues);
     } else {
-        // This triggers when setEditingUser(undefined) is called
+      // This triggers when setEditingUser(undefined) is called
       reset({
         firstName: "",
-      lastName: "",
-      email: "",
-      phone: ""
+        lastName: "",
+        email: "",
+        phone: "",
       });
     }
   }, [defaultValues, reset]);
@@ -44,7 +44,7 @@ export default function UserForm({ onSubmit, defaultValues, onCancel }: Props) {
         onSubmit(data);
         reset();
       })}
-      className="max-w-md bg-white p-6 rounded-lg shadow-md"
+      className="max-w-md w-full bg-white border border-neutral-200 p-6 rounded-lg shadow-md"
     >
       {/* Dynamic Title */}
       <h2 className="text-xl font-semibold mb-4 text-gray-800">
@@ -81,12 +81,12 @@ export default function UserForm({ onSubmit, defaultValues, onCancel }: Props) {
         </div>
       ))}
 
-<div className="flex flex-col gap-2 mt-6">
+      <div className="flex flex-col gap-2 mt-6">
         <button
           type="submit"
           className={`w-full py-2 rounded-md text-white font-medium transition shadow-sm ${
-            isEditing 
-              ? "bg-green-600 hover:bg-green-700" 
+            isEditing
+              ? "bg-green-600 hover:bg-green-700"
               : "bg-blue-600 hover:bg-blue-700"
           }`}
         >
@@ -100,7 +100,7 @@ export default function UserForm({ onSubmit, defaultValues, onCancel }: Props) {
             onClick={onCancel}
             className="w-full py-2 rounded-md bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition"
           >
-            Cancel Edit
+            Cancel
           </button>
         )}
       </div>

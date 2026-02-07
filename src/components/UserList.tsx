@@ -1,3 +1,4 @@
+import { Edit, Trash } from "lucide-react";
 import type { User } from "../types/user";
 
 interface Props {
@@ -78,20 +79,20 @@ export default function UserList({
               <td className="px-4 py-2">
                 {user.phone}
               </td>
-              <td className="px-4 py-2 space-x-2">
+              <td className="px-4 py-2 space-x-4">
                 <button
                   onClick={() => onEdit(user)}
-                  className="text-blue-600 hover:underline text-sm"
+                  className="text-blue-600 hover:bg-blue-100 p-1 rounded-md"
                 >
-                  Edit
+                  <Edit className="size-5" />
                 </button>
                 <button
                   onClick={() =>
                     user.id && onDelete(user.id)
                   }
-                  className="text-red-600 hover:underline text-sm"
+                  className="text-red-500 hover:bg-red-100 p-1 rounded-md"
                 >
-                  Delete
+                  <Trash className="size-5" />
                 </button>
               </td>
             </tr>

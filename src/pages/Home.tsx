@@ -90,7 +90,7 @@ export default function Home() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4">
+    <div className="mx-auto pb-4">
       <div className="py-6 flex items-center justify-center border-b border-neutral-200 mb-8">
         <h1 className="text-2xl font-bold text-gray-800">User Management</h1>
       </div>
@@ -101,7 +101,7 @@ export default function Home() {
         </div>
       )}
 
-      <div className="grid md:grid-cols-[380px_1fr] gap-10 items-start">
+      <div className="flex flex-col gap-10 items-center max-w-5xl mx-auto">
         {/* Form Column - No extra buttons here, UserForm handles its own cancel button */}
         <UserForm
           onSubmit={handleSubmit}
@@ -110,15 +110,15 @@ export default function Home() {
         />
 
         {/* List Column */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <div className="flex justify-between items-center mb-4">
-    <h2 className="text-lg font-semibold text-gray-700">All Users</h2>
-    {/* The Count Badge */}
-    <span className="bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-full">
-      {users.length} Total
-    </span>
-  </div>
-          
+        <div className="bg-white w-full rounded-xl shadow-sm border border-gray-100 p-6">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-lg font-semibold text-gray-700">All Users</h2>
+            {/* The Count Badge */}
+            <span className="bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-full">
+              {users.length} Total
+            </span>
+          </div>
+
           {loading && users.length === 0 ? (
             <div className="flex flex-col gap-4">
               {[1, 2, 3].map((i) => (
@@ -146,9 +146,9 @@ export default function Home() {
         message="Are you sure you want to remove this user? This action cannot be undone."
       />
       <Toast
-        isOpen={showToast} 
-        message={toastMessage} 
-        onClose={() => setShowToast(false)} 
+        isOpen={showToast}
+        message={toastMessage}
+        onClose={() => setShowToast(false)}
       />
     </div>
   );
