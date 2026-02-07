@@ -1,7 +1,9 @@
 import axios from "axios";
 import type { User } from "../types/user";
 
-const API_URL = "http://localhost:5000/users";
+// Use an environment variable, with a fallback for local development
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_URL = `${BASE_URL}/users`;
 
 export const getUsers = () => axios.get<User[]>(API_URL);
 

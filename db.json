@@ -1,18 +1,3 @@
 {
-  "users": [
-    {
-      "firstName": "sahil2",
-      "lastName": "khan",
-      "phone": "1234567890",
-      "email": "test@gmail.com",
-      "id": "1e0d"
-    },
-    {
-      "id": "acd5",
-      "firstName": "john",
-      "lastName": "doe",
-      "phone": "1234567890",
-      "email": "john@test.com"
-    }
-  ]
+  "users": []
 }
